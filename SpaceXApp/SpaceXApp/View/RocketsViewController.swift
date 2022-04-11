@@ -93,9 +93,20 @@ class RocketsViewController: UIViewController {
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		
+		configurateNavigationBar()
 		configurateSubviews()
 		fillData()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setNavigationBarHidden(true, animated: animated)
+	}
+
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		navigationController?.setNavigationBarHidden(false, animated: animated)
+	}
 	
 	// MARK: - Private methods
 	
@@ -103,6 +114,15 @@ class RocketsViewController: UIViewController {
 		rocketInfoView.configurate(launchDate: "10 февраля, 2020", country: "США", cost: "100")
 		firstStageView.configurate(header: "Первая ступень", enginesCount: "9", fuelMass: "20", burnTime: "120")
 		secondStageView.configurate(header: "Первая ступень", enginesCount: "9", fuelMass: "20", burnTime: "120")
+	}
+	
+	private func configurateNavigationBar() {
+		let backButton = UIBarButtonItem()
+		backButton.title = "Назад"
+		backButton.tintColor = .white
+		navigationController?.navigationBar.barTintColor = .black
+		navigationController?.navigationBar.isTranslucent = false
+		navigationItem.backBarButtonItem = backButton
 	}
 	
 	private func configurateSubviews() {
@@ -148,7 +168,7 @@ class RocketsViewController: UIViewController {
 	
 	private func setupRocketImageView() {
 		rocketImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-		rocketImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: -20).isActive = true
+		rocketImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: -50).isActive = true
 		rocketImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
 		rocketImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
 		rocketImageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 1/3).isActive = true
@@ -209,7 +229,8 @@ class RocketsViewController: UIViewController {
 	// MARK: - @objc methods
 	
 	@objc private func launchesButtonAction() {
-		
+		let launchesViewController = LaunchesViewController()
+		navigationController?.pushViewController(launchesViewController, animated: true)
 	}
 }
 

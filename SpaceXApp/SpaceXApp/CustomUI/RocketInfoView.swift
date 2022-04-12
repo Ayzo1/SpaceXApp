@@ -34,7 +34,7 @@ class RocketInfoView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 16)
-		label.textColor = .gray
+		label.textColor = .white
 		return label
 	}()
 	
@@ -42,7 +42,7 @@ class RocketInfoView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 16)
-		label.textColor = .gray
+		label.textColor = .white
 		return label
 	}()
 	
@@ -50,7 +50,7 @@ class RocketInfoView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 16)
-		label.textColor = .gray
+		label.textColor = .white
 		return label
 	}()
 	

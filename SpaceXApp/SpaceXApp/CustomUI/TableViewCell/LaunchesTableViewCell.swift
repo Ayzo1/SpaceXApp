@@ -17,6 +17,7 @@ class LaunchesTableViewCell: UITableViewCell {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.textColor = .white
+		label.lineBreakMode = .byTruncatingTail
 		label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
 		return label
 	}()
@@ -47,12 +48,12 @@ class LaunchesTableViewCell: UITableViewCell {
 		dateLabel.text = date
 		contentView.addSubview(launcCellView)
 		setupLaunchCellView()
+		launcCellView.addSubview(launchIconImageView)
+		setupIconViewLabel()
 		launcCellView.addSubview(nameLabel)
 		setupNameLabel()
 		launcCellView.addSubview(dateLabel)
 		setupDateLabel()
-		launcCellView.addSubview(launchIconImageView)
-		setupIconViewLabel()
 	}
 	
 	private func setupLaunchCellView() {
@@ -66,13 +67,14 @@ class LaunchesTableViewCell: UITableViewCell {
 	}
 	
 	private func setupNameLabel() {
+		nameLabel.trailingAnchor.constraint(equalTo: launchIconImageView.leadingAnchor, constant: -20).isActive = true
 		nameLabel.topAnchor.constraint(greaterThanOrEqualTo: launcCellView.topAnchor).isActive = true
 		nameLabel.bottomAnchor.constraint(equalTo: launcCellView.centerYAnchor, constant: -2).isActive = true
 		nameLabel.leadingAnchor.constraint(equalTo: launcCellView.leadingAnchor, constant: 20).isActive = true
 	}
 	
 	private func setupDateLabel() {
-		dateLabel.bottomAnchor.constraint(lessThanOrEqualTo: launcCellView.bottomAnchor, constant: 10).isActive = true
+		dateLabel.bottomAnchor.constraint(lessThanOrEqualTo: launcCellView.bottomAnchor, constant: -10).isActive = true
 		dateLabel.topAnchor.constraint(equalTo: launcCellView.centerYAnchor, constant: 2).isActive = true
 		dateLabel.leadingAnchor.constraint(equalTo: launcCellView.leadingAnchor, constant: 20).isActive = true
 	}

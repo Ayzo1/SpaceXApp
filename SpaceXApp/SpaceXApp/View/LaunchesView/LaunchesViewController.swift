@@ -1,8 +1,11 @@
 import UIKit
 
-class LaunchesViewController: UIViewController {
+class LaunchesViewController: UIViewController, LaunchesViewProtocol {
 
 	// MARK: - Properties
+	
+	var presenter: LaunchesPresenterProtocol?
+	var rocketId: String = ""
 	
 	private lazy var launchesTableView: UITableView = {
 		let tableView = UITableView(frame: CGRect.zero, style: .plain)
@@ -17,13 +20,22 @@ class LaunchesViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+		presenter = LaunchesPresenter(view: self, rocketId: rocketId)
 		launchesTableView.delegate = self
 		launchesTableView.dataSource = self
 		view.backgroundColor = .black
 		view.addSubview(launchesTableView)
 		setupLaunchesTableView()
+		
     }
+	
+	// MARK: - LaunchesViewProtocol
+	
+	func updateValues() {
+		DispatchQueue.main.async {
+			self.launchesTableView.reloadData()
+		}
+	}
 	
 	// MARK: - Private methods
 	
@@ -38,7 +50,7 @@ class LaunchesViewController: UIViewController {
 extension LaunchesViewController: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 3
+		return presenter?.getLaunchesCount() ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,11 +58,13 @@ extension LaunchesViewController: UITableViewDelegate, UITableViewDataSource {
 		guard let launchCell = cell as? LaunchesTableViewCell else {
 			return cell
 		}
-		if indexPath.row == 1 {
-			launchCell.configurate(name: "Aaa", date: "22 февраля, 2020", isSuccess: false)
-		} else {
-			launchCell.configurate(name: "Aaa", date: "22 февраля, 2020", isSuccess: true)
+		guard let launchDescription = presenter?.getLaunchDescription(for: indexPath.row) else {
+			return launchCell
 		}
+		launchCell.configurate(
+			name: launchDescription.name,
+			date: launchDescription.date,
+			isSuccess: launchDescription.isSuccess)
 		return launchCell
 	}
 }

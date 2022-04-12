@@ -12,6 +12,16 @@
 		8F0872FA28037336004EFCFE /* RocketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0872F828037336004EFCFE /* RocketsViewController.swift */; };
 		8F08730B280402AF004EFCFE /* LaunchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08730A280402AF004EFCFE /* LaunchesViewController.swift */; };
 		8F08730F280417F1004EFCFE /* LaunchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08730E280417F1004EFCFE /* LaunchesTableViewCell.swift */; };
+		8F087316280492CD004EFCFE /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F087315280492CD004EFCFE /* NetworkingService.swift */; };
+		8F087319280492D8004EFCFE /* NetworkingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F087318280492D8004EFCFE /* NetworkingServiceProtocol.swift */; };
+		8F08731C280492E1004EFCFE /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08731B280492E1004EFCFE /* Rocket.swift */; };
+		8F0873212804B638004EFCFE /* RocketsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0873202804B638004EFCFE /* RocketsPresenterProtocol.swift */; };
+		8F0873262804B66E004EFCFE /* RocketsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0873252804B66E004EFCFE /* RocketsViewProtocol.swift */; };
+		8F08732A2804B8FA004EFCFE /* RocketsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0873292804B8FA004EFCFE /* RocketsPresenter.swift */; };
+		8F08732E2804C872004EFCFE /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08732D2804C872004EFCFE /* Launch.swift */; };
+		8F0873322804D6B0004EFCFE /* LaunchesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0873312804D6B0004EFCFE /* LaunchesViewProtocol.swift */; };
+		8F0873382804D7A5004EFCFE /* LaunchesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0873372804D7A5004EFCFE /* LaunchesPresenterProtocol.swift */; };
+		8F08733B2804D909004EFCFE /* LaunchesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08733A2804D909004EFCFE /* LaunchesPresenter.swift */; };
 		8F554293280037EE00A67D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F554292280037EE00A67D82 /* AppDelegate.swift */; };
 		8F55429C280037FF00A67D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F55429B280037FF00A67D82 /* Assets.xcassets */; };
 		8F55429F280037FF00A67D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F55429D280037FF00A67D82 /* LaunchScreen.storyboard */; };
@@ -24,6 +34,16 @@
 		8F0872F828037336004EFCFE /* RocketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsViewController.swift; sourceTree = "<group>"; };
 		8F08730A280402AF004EFCFE /* LaunchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesViewController.swift; sourceTree = "<group>"; };
 		8F08730E280417F1004EFCFE /* LaunchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesTableViewCell.swift; sourceTree = "<group>"; };
+		8F087315280492CD004EFCFE /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		8F087318280492D8004EFCFE /* NetworkingServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingServiceProtocol.swift; sourceTree = "<group>"; };
+		8F08731B280492E1004EFCFE /* Rocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
+		8F0873202804B638004EFCFE /* RocketsPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsPresenterProtocol.swift; sourceTree = "<group>"; };
+		8F0873252804B66E004EFCFE /* RocketsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsViewProtocol.swift; sourceTree = "<group>"; };
+		8F0873292804B8FA004EFCFE /* RocketsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsPresenter.swift; sourceTree = "<group>"; };
+		8F08732D2804C872004EFCFE /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		8F0873312804D6B0004EFCFE /* LaunchesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesViewProtocol.swift; sourceTree = "<group>"; };
+		8F0873372804D7A5004EFCFE /* LaunchesPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesPresenterProtocol.swift; sourceTree = "<group>"; };
+		8F08733A2804D909004EFCFE /* LaunchesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesPresenter.swift; sourceTree = "<group>"; };
 		8F55428F280037EE00A67D82 /* SpaceXApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F554292280037EE00A67D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F55429B280037FF00A67D82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,8 +66,8 @@
 		8F08730228038E4F004EFCFE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8F0872F828037336004EFCFE /* RocketsViewController.swift */,
-				8F08730A280402AF004EFCFE /* LaunchesViewController.swift */,
+				8F0873302804D692004EFCFE /* LaunchesView */,
+				8F0873242804B655004EFCFE /* RocketsView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -79,6 +99,60 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		8F08731E2804B5FD004EFCFE /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8F0873362804D789004EFCFE /* LaunchesPresenter */,
+				8F08731F2804B60B004EFCFE /* RocketsPresenter */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8F08731F2804B60B004EFCFE /* RocketsPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				8F0873202804B638004EFCFE /* RocketsPresenterProtocol.swift */,
+				8F0873292804B8FA004EFCFE /* RocketsPresenter.swift */,
+			);
+			path = RocketsPresenter;
+			sourceTree = "<group>";
+		};
+		8F0873242804B655004EFCFE /* RocketsView */ = {
+			isa = PBXGroup;
+			children = (
+				8F0872F828037336004EFCFE /* RocketsViewController.swift */,
+				8F0873252804B66E004EFCFE /* RocketsViewProtocol.swift */,
+			);
+			path = RocketsView;
+			sourceTree = "<group>";
+		};
+		8F08732C2804C83B004EFCFE /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				8F08731B280492E1004EFCFE /* Rocket.swift */,
+				8F08732D2804C872004EFCFE /* Launch.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		8F0873302804D692004EFCFE /* LaunchesView */ = {
+			isa = PBXGroup;
+			children = (
+				8F08730A280402AF004EFCFE /* LaunchesViewController.swift */,
+				8F0873312804D6B0004EFCFE /* LaunchesViewProtocol.swift */,
+			);
+			path = LaunchesView;
+			sourceTree = "<group>";
+		};
+		8F0873362804D789004EFCFE /* LaunchesPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				8F0873372804D7A5004EFCFE /* LaunchesPresenterProtocol.swift */,
+				8F08733A2804D909004EFCFE /* LaunchesPresenter.swift */,
+			);
+			path = LaunchesPresenter;
+			sourceTree = "<group>";
+		};
 		8F554286280037EE00A67D82 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +172,10 @@
 		8F554291280037EE00A67D82 /* SpaceXApp */ = {
 			isa = PBXGroup;
 			children = (
+				8F08732C2804C83B004EFCFE /* Structs */,
+				8F08731E2804B5FD004EFCFE /* Presentation */,
+				8F087315280492CD004EFCFE /* NetworkingService.swift */,
+				8F087318280492D8004EFCFE /* NetworkingServiceProtocol.swift */,
 				8F08730328038E67004EFCFE /* CustomUI */,
 				8F08730228038E4F004EFCFE /* View */,
 				8F554292280037EE00A67D82 /* AppDelegate.swift */,
@@ -177,9 +255,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F0873262804B66E004EFCFE /* RocketsViewProtocol.swift in Sources */,
 				8F5542BD2801B48500A67D82 /* CustomCollectionViewCell.swift in Sources */,
+				8F0873322804D6B0004EFCFE /* LaunchesViewProtocol.swift in Sources */,
+				8F08732A2804B8FA004EFCFE /* RocketsPresenter.swift in Sources */,
+				8F08733B2804D909004EFCFE /* LaunchesPresenter.swift in Sources */,
+				8F087319280492D8004EFCFE /* NetworkingServiceProtocol.swift in Sources */,
+				8F08732E2804C872004EFCFE /* Launch.swift in Sources */,
+				8F0873212804B638004EFCFE /* RocketsPresenterProtocol.swift in Sources */,
+				8F0873382804D7A5004EFCFE /* LaunchesPresenterProtocol.swift in Sources */,
 				8F08730B280402AF004EFCFE /* LaunchesViewController.swift in Sources */,
+				8F08731C280492E1004EFCFE /* Rocket.swift in Sources */,
 				8F08730F280417F1004EFCFE /* LaunchesTableViewCell.swift in Sources */,
+				8F087316280492CD004EFCFE /* NetworkingService.swift in Sources */,
 				8F554293280037EE00A67D82 /* AppDelegate.swift in Sources */,
 				8F0872E928032270004EFCFE /* RocketInfoView.swift in Sources */,
 				8F0872E02801F755004EFCFE /* StageView.swift in Sources */,

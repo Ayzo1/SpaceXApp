@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 class RocketsViewController: UIViewController, RocketsViewProtocol {
 	
@@ -124,7 +125,6 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 	// MARK: - Private methods
 	
 	private func fillData() {
-		
 		guard let pagesCount = presenter?.getPagesCount() else {
 			return
 		}
@@ -138,6 +138,12 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 			return
 		}
 		rocketNameLabel.text = name
+		
+		guard let url = presenter?.getImageURL(for: pageControl.currentPage) else {
+			return
+		}
+		
+		rocketImageView.kf.setImage(with: url)
 	}
 	
 	private func setSecondStageValues() {

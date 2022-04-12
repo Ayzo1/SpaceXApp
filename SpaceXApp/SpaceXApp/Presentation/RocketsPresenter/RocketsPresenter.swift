@@ -83,7 +83,15 @@ final class RocketsPresenter: RocketsPresenterProtocol {
 		return (engiensCount: String(secondStage.engines), massOfFuel: String(secondStage.fuel_amount_tons), burnTime: String(secondStage.burn_time_sec ?? 0))
 	}
 	
-	func getImageURL(for index: Int) -> URL {
-		return URL(string: "")!
+	func getImageURL(for index: Int) -> URL? {
+		guard let stringUrl = rockets[index].flickr_images.first else {
+			return nil
+		}
+		
+		guard let url = URL(string: stringUrl) else {
+			return nil
+		}
+		
+		return url
 	}
 }

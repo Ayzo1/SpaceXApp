@@ -48,6 +48,7 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 		let collectionView = UICollectionView(frame: CGRect(x: 10, y: 30, width: 0, height: 100), collectionViewLayout: layout)
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+		collectionView.backgroundColor = .black
 		return collectionView
 	}()
 	
@@ -128,6 +129,10 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 		guard let pagesCount = presenter?.getPagesCount() else {
 			return
 		}
+		if pagesCount < 1 {
+			return
+		}
+		
 		pageControl.numberOfPages = pagesCount
 		
 		setRocketInfoValues()
@@ -298,6 +303,8 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 		let launchesViewController = LaunchesViewController()
 		let rocketId = presenter?.getRocketId(for: pageControl.currentPage)
 		launchesViewController.rocketId = rocketId ?? ""
+		let rocketName = presenter?.getRocketName(for: pageControl.currentPage)
+		launchesViewController.rocketName = rocketName ?? ""
 		navigationController?.pushViewController(launchesViewController, animated: true)
 	}
 }

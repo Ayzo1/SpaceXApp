@@ -84,10 +84,11 @@ final class RocketsPresenter: RocketsPresenterProtocol {
 	}
 	
 	func getImageURL(for index: Int) -> URL? {
+		
 		guard let stringUrl = rockets[index].flickr_images.first else {
 			return nil
 		}
-		
+				
 		guard let url = URL(string: stringUrl) else {
 			return nil
 		}

@@ -6,6 +6,7 @@ class LaunchesViewController: UIViewController, LaunchesViewProtocol {
 	
 	var presenter: LaunchesPresenterProtocol?
 	var rocketId: String = ""
+	var rocketName: String = ""
 	
 	private lazy var launchesTableView: UITableView = {
 		let tableView = UITableView(frame: CGRect.zero, style: .plain)
@@ -21,6 +22,8 @@ class LaunchesViewController: UIViewController, LaunchesViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 		presenter = LaunchesPresenter(view: self, rocketId: rocketId)
+		navigationItem.title = rocketName
+		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 		launchesTableView.delegate = self
 		launchesTableView.dataSource = self
 		view.backgroundColor = .black

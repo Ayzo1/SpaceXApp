@@ -40,6 +40,17 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 		return label
 	}()
 	
+	private lazy var settingsButton: UIButton = {
+		let button = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.contentVerticalAlignment = .fill
+		button.contentHorizontalAlignment = .fill
+		button.tintColor = .gray
+		button.setImage(UIImage(systemName: "gearshape"), for: .normal)
+		button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+		return button
+	}()
+	
 	private lazy var collectionView: UICollectionView = {
 		let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
 		layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
@@ -121,6 +132,10 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 			self.fillData()
 			self.collectionView.reloadData()
 		}
+	}
+	
+	func reloadCollectionViewCell(indexPaths: [IndexPath]) {
+		collectionView.reloadItems(at: indexPaths)
 	}
 	
 	// MARK: - Private methods
@@ -231,6 +246,8 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 		headerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
 		headerView.addSubview(rocketNameLabel)
 		setupRocketNameLabel()
+		headerView.addSubview(settingsButton)
+		setupSettingsButton()
 	}
 	
 	private func setupRocketImageView() {
@@ -245,6 +262,13 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 		rocketNameLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
 		rocketNameLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 30).isActive = true
 		rocketNameLabel.trailingAnchor.constraint(greaterThanOrEqualTo: headerView.trailingAnchor, constant: 20).isActive = true
+	}
+	
+	private func setupSettingsButton() {
+		settingsButton.centerYAnchor.constraint(equalTo: rocketNameLabel.centerYAnchor).isActive = true
+		settingsButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -30).isActive = true
+		settingsButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+		settingsButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
 	}
 	
 	private func setupCollectionView() {
@@ -295,6 +319,13 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 	
 	// MARK: - @objc methods
 	
+	@objc private func settingsButtonTapped() {
+		
+		let settingsViewContriller = SettingsViewController()
+		let settingsNavigationController = UINavigationController(rootViewController: settingsViewContriller)
+		self.present(settingsNavigationController, animated: true, completion: nil)
+	}
+	
 	@objc private func pageDidChange() {
 		updateValues()
 	}
@@ -312,7 +343,7 @@ class RocketsViewController: UIViewController, RocketsViewProtocol {
 extension RocketsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 6
+		return presenter?.getCharacteristicsCount() ?? 0
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -320,7 +351,10 @@ extension RocketsViewController: UICollectionViewDelegate, UICollectionViewDataS
 		guard let custom = cell as? CustomCollectionViewCell else {
 			return cell
 		}
-		custom.configurateCell(value: "123456789", key: "aaa")
+		guard let characteristics = presenter?.getCharacterictics(for: pageControl.currentPage, characteristicIndex: indexPath.row) else {
+			return custom
+		}
+		custom.configurateCell(value: characteristics.value, key: characteristics.name)
 		return custom
 	}
 }

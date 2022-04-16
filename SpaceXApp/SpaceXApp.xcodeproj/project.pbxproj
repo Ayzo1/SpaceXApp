@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,19 @@
 		8F0873322804D6B0004EFCFE /* LaunchesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0873312804D6B0004EFCFE /* LaunchesViewProtocol.swift */; };
 		8F0873382804D7A5004EFCFE /* LaunchesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0873372804D7A5004EFCFE /* LaunchesPresenterProtocol.swift */; };
 		8F08733B2804D909004EFCFE /* LaunchesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08733A2804D909004EFCFE /* LaunchesPresenter.swift */; };
+		8F0AE4AC280A2B6A0073296B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4AA280A2B6A0073296B /* SettingsViewController.swift */; };
+		8F0AE4AD280A2B6A0073296B /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F0AE4AB280A2B6A0073296B /* SettingsViewController.xib */; };
+		8F0AE4B1280AD8C90073296B /* SettingsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4B0280AD8C90073296B /* SettingsPresenterProtocol.swift */; };
+		8F0AE4B5280AD9660073296B /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4B4280AD9660073296B /* SettingsPresenter.swift */; };
+		8F0AE4BB280ADAD20073296B /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4BA280ADAD20073296B /* SettingsServiceProtocol.swift */; };
+		8F0AE4BE280ADB2B0073296B /* SettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4BD280ADB2B0073296B /* SettingsEnums.swift */; };
+		8F0AE4C1280AE3930073296B /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4C0280AE3930073296B /* SettingsService.swift */; };
+		8F0AE4C4280AE8AF0073296B /* SettingsServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4C3280AE8AF0073296B /* SettingsServiceDelegate.swift */; };
+		8F0AE4C7280AEB5D0073296B /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4C6280AEB5D0073296B /* ServiceLocator.swift */; };
+		8F0AE4CA280AF8600073296B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4C9280AF8600073296B /* UserDefaultsService.swift */; };
+		8F0AE4CD280AF8D00073296B /* UserDefaultsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE4CC280AF8D00073296B /* UserDefaultsServiceProtocol.swift */; };
+		8F0D34C42808C60200DDCFE1 /* SettingsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0D34C32808C60200DDCFE1 /* SettingsViewProtocol.swift */; };
+		8F0D34CA2808CA4F00DDCFE1 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0D34C92808CA4F00DDCFE1 /* SettingsTableViewCell.swift */; };
 		8F554293280037EE00A67D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F554292280037EE00A67D82 /* AppDelegate.swift */; };
 		8F55429C280037FF00A67D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F55429B280037FF00A67D82 /* Assets.xcassets */; };
 		8F55429F280037FF00A67D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F55429D280037FF00A67D82 /* LaunchScreen.storyboard */; };
@@ -47,6 +60,19 @@
 		8F0873312804D6B0004EFCFE /* LaunchesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesViewProtocol.swift; sourceTree = "<group>"; };
 		8F0873372804D7A5004EFCFE /* LaunchesPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesPresenterProtocol.swift; sourceTree = "<group>"; };
 		8F08733A2804D909004EFCFE /* LaunchesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesPresenter.swift; sourceTree = "<group>"; };
+		8F0AE4AA280A2B6A0073296B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8F0AE4AB280A2B6A0073296B /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		8F0AE4B0280AD8C90073296B /* SettingsPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenterProtocol.swift; sourceTree = "<group>"; };
+		8F0AE4B4280AD9660073296B /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		8F0AE4BA280ADAD20073296B /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
+		8F0AE4BD280ADB2B0073296B /* SettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnums.swift; sourceTree = "<group>"; };
+		8F0AE4C0280AE3930073296B /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		8F0AE4C3280AE8AF0073296B /* SettingsServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceDelegate.swift; sourceTree = "<group>"; };
+		8F0AE4C6280AEB5D0073296B /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		8F0AE4C9280AF8600073296B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		8F0AE4CC280AF8D00073296B /* UserDefaultsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceProtocol.swift; sourceTree = "<group>"; };
+		8F0D34C32808C60200DDCFE1 /* SettingsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewProtocol.swift; sourceTree = "<group>"; };
+		8F0D34C92808CA4F00DDCFE1 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		8F55428F280037EE00A67D82 /* SpaceXApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F554292280037EE00A67D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F55429B280037FF00A67D82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +97,7 @@
 		8F08730228038E4F004EFCFE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8F0D34C22808C5D500DDCFE1 /* SettingsView */,
 				8F0873302804D692004EFCFE /* LaunchesView */,
 				8F0873242804B655004EFCFE /* RocketsView */,
 			);
@@ -100,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				8F08730E280417F1004EFCFE /* LaunchesTableViewCell.swift */,
+				8F0D34C92808CA4F00DDCFE1 /* SettingsTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -107,6 +135,7 @@
 		8F08731E2804B5FD004EFCFE /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8F0AE4AF280AD8650073296B /* SettingsPresenter */,
 				8F0873362804D789004EFCFE /* LaunchesPresenter */,
 				8F08731F2804B60B004EFCFE /* RocketsPresenter */,
 			);
@@ -158,6 +187,65 @@
 			path = LaunchesPresenter;
 			sourceTree = "<group>";
 		};
+		8F0AE4AF280AD8650073296B /* SettingsPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				8F0AE4B0280AD8C90073296B /* SettingsPresenterProtocol.swift */,
+				8F0AE4B4280AD9660073296B /* SettingsPresenter.swift */,
+			);
+			path = SettingsPresenter;
+			sourceTree = "<group>";
+		};
+		8F0AE4B7280ADA5F0073296B /* ServicesLayer */ = {
+			isa = PBXGroup;
+			children = (
+				8F0AE4CF280AFC030073296B /* UserDefaultsService */,
+				8F0AE4C6280AEB5D0073296B /* ServiceLocator.swift */,
+				8F0AE4B9280ADA830073296B /* SettingsService */,
+				8F0AE4B8280ADA6C0073296B /* NetworkService */,
+			);
+			path = ServicesLayer;
+			sourceTree = "<group>";
+		};
+		8F0AE4B8280ADA6C0073296B /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				8F087315280492CD004EFCFE /* NetworkingService.swift */,
+				8F087318280492D8004EFCFE /* NetworkingServiceProtocol.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		8F0AE4B9280ADA830073296B /* SettingsService */ = {
+			isa = PBXGroup;
+			children = (
+				8F0AE4BA280ADAD20073296B /* SettingsServiceProtocol.swift */,
+				8F0AE4BD280ADB2B0073296B /* SettingsEnums.swift */,
+				8F0AE4C0280AE3930073296B /* SettingsService.swift */,
+				8F0AE4C3280AE8AF0073296B /* SettingsServiceDelegate.swift */,
+			);
+			path = SettingsService;
+			sourceTree = "<group>";
+		};
+		8F0AE4CF280AFC030073296B /* UserDefaultsService */ = {
+			isa = PBXGroup;
+			children = (
+				8F0AE4CC280AF8D00073296B /* UserDefaultsServiceProtocol.swift */,
+				8F0AE4C9280AF8600073296B /* UserDefaultsService.swift */,
+			);
+			path = UserDefaultsService;
+			sourceTree = "<group>";
+		};
+		8F0D34C22808C5D500DDCFE1 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				8F0D34C32808C60200DDCFE1 /* SettingsViewProtocol.swift */,
+				8F0AE4AA280A2B6A0073296B /* SettingsViewController.swift */,
+				8F0AE4AB280A2B6A0073296B /* SettingsViewController.xib */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
 		8F554286280037EE00A67D82 = {
 			isa = PBXGroup;
 			children = (
@@ -179,10 +267,9 @@
 		8F554291280037EE00A67D82 /* SpaceXApp */ = {
 			isa = PBXGroup;
 			children = (
+				8F0AE4B7280ADA5F0073296B /* ServicesLayer */,
 				8F08732C2804C83B004EFCFE /* Structs */,
 				8F08731E2804B5FD004EFCFE /* Presentation */,
-				8F087315280492CD004EFCFE /* NetworkingService.swift */,
-				8F087318280492D8004EFCFE /* NetworkingServiceProtocol.swift */,
 				8F08730328038E67004EFCFE /* CustomUI */,
 				8F08730228038E4F004EFCFE /* View */,
 				8F554292280037EE00A67D82 /* AppDelegate.swift */,
@@ -207,7 +294,6 @@
 				AFC7A6BDB080A356E4C46C97 /* Pods-SpaceXApp.debug.xcconfig */,
 				7F00BD729D1897277391504D /* Pods-SpaceXApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -271,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F55429F280037FF00A67D82 /* LaunchScreen.storyboard in Resources */,
+				8F0AE4AD280A2B6A0073296B /* SettingsViewController.xib in Resources */,
 				8F55429C280037FF00A67D82 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,23 +411,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F0AE4C7280AEB5D0073296B /* ServiceLocator.swift in Sources */,
 				8F0873262804B66E004EFCFE /* RocketsViewProtocol.swift in Sources */,
 				8F5542BD2801B48500A67D82 /* CustomCollectionViewCell.swift in Sources */,
 				8F0873322804D6B0004EFCFE /* LaunchesViewProtocol.swift in Sources */,
+				8F0AE4AC280A2B6A0073296B /* SettingsViewController.swift in Sources */,
+				8F0D34C42808C60200DDCFE1 /* SettingsViewProtocol.swift in Sources */,
+				8F0AE4CD280AF8D00073296B /* UserDefaultsServiceProtocol.swift in Sources */,
 				8F08732A2804B8FA004EFCFE /* RocketsPresenter.swift in Sources */,
 				8F08733B2804D909004EFCFE /* LaunchesPresenter.swift in Sources */,
+				8F0AE4CA280AF8600073296B /* UserDefaultsService.swift in Sources */,
+				8F0AE4B5280AD9660073296B /* SettingsPresenter.swift in Sources */,
 				8F087319280492D8004EFCFE /* NetworkingServiceProtocol.swift in Sources */,
 				8F08732E2804C872004EFCFE /* Launch.swift in Sources */,
+				8F0AE4BB280ADAD20073296B /* SettingsServiceProtocol.swift in Sources */,
 				8F0873212804B638004EFCFE /* RocketsPresenterProtocol.swift in Sources */,
 				8F0873382804D7A5004EFCFE /* LaunchesPresenterProtocol.swift in Sources */,
 				8F08730B280402AF004EFCFE /* LaunchesViewController.swift in Sources */,
 				8F08731C280492E1004EFCFE /* Rocket.swift in Sources */,
+				8F0AE4BE280ADB2B0073296B /* SettingsEnums.swift in Sources */,
 				8F08730F280417F1004EFCFE /* LaunchesTableViewCell.swift in Sources */,
 				8F087316280492CD004EFCFE /* NetworkingService.swift in Sources */,
 				8F554293280037EE00A67D82 /* AppDelegate.swift in Sources */,
 				8F0872E928032270004EFCFE /* RocketInfoView.swift in Sources */,
+				8F0AE4C1280AE3930073296B /* SettingsService.swift in Sources */,
 				8F0872E02801F755004EFCFE /* StageView.swift in Sources */,
+				8F0D34CA2808CA4F00DDCFE1 /* SettingsTableViewCell.swift in Sources */,
+				8F0AE4C4280AE8AF0073296B /* SettingsServiceDelegate.swift in Sources */,
 				8F0872FA28037336004EFCFE /* RocketsViewController.swift in Sources */,
+				8F0AE4B1280AD8C90073296B /* SettingsPresenterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

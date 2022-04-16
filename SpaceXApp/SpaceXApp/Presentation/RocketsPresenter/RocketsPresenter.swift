@@ -4,10 +4,16 @@ final class RocketsPresenter: RocketsPresenterProtocol {
 	
 	weak var view: RocketsViewProtocol?
 	private var rockets: [Rocket] = [Rocket]()
+	var settingsService: SettingsServiceProtocol?
 	
 	init(view: RocketsViewProtocol) {
 		self.view = view
 		downloadRockets()
+		guard let service: SettingsServiceProtocol = ServiceLocator.shared.resolve() else {
+			return
+		}
+		settingsService = service
+		settingsService?.delegate = self
 	}
 	
 	// MARK: - PrivateMethods
@@ -94,5 +100,94 @@ final class RocketsPresenter: RocketsPresenterProtocol {
 		}
 		
 		return url
+	}
+	
+	func getCharacteristicsCount() -> Int {
+		if rockets.isEmpty {
+			return 0
+		}
+		return 4
+	}
+	
+	func getCharacterictics(for rocketIndex: Int, characteristicIndex: Int) -> (value: String, name: String) {
+				
+		switch characteristicIndex {
+		case 0:
+			guard let service = settingsService else {
+				return (value: String(rockets[rocketIndex].height.feet), name: "Высота, ft")
+			}
+			if service.currentHeightSettings == .m {
+				return (
+					value: String(rockets[rocketIndex].height.meters),
+					name: "Высота, \(service.currentHeightSettings.rawValue)")
+			} else {
+				return (
+					value: String(rockets[rocketIndex].height.feet),
+					name: "Высота, \(service.currentHeightSettings.rawValue)")
+			}
+		case 1:
+			guard let service = settingsService else {
+				return (value: String(rockets[rocketIndex].diameter.feet), name: "Диаметр, ft")
+			}
+			if service.currentDiameterSettings == .m {
+				return (
+					value: String(rockets[rocketIndex].diameter.meters),
+					name: "Диаметр, \(service.currentDiameterSettings.rawValue)")
+			} else {
+				return (
+					value: String(rockets[rocketIndex].diameter.feet),
+					name: "Диаметр, \(service.currentDiameterSettings.rawValue)")
+			}
+		case 2:
+			guard let service = settingsService else {
+				return (value: String(rockets[rocketIndex].mass.kg), name: "Масса, kg")
+			}
+			if service.currentMassSettings == .kg {
+				return (
+					value: String(rockets[rocketIndex].mass.kg),
+					name: "Масса, \(service.currentMassSettings.rawValue)")
+			} else {
+				return (
+					value: String(rockets[rocketIndex].mass.lb),
+					name: "Масса, \(service.currentMassSettings.rawValue)")
+			}
+		case 3:
+			guard let service = settingsService else {
+				return (value: String(rockets[rocketIndex].payload_weights[0].kg), name: "Нагрузка, kg")
+			}
+			if service.currentPayloadsSettings == .kg {
+				return (
+					value: String(rockets[rocketIndex].payload_weights[0].kg),
+					name: "Нагрузка, \(service.currentPayloadsSettings.rawValue)")
+			} else {
+				return (
+					value: String(rockets[rocketIndex].payload_weights[0].lb),
+					name: "Нагрузка, \(service.currentPayloadsSettings.rawValue)")
+			}
+		default:
+			return (value: "", name: "")
+		}
+	}
+}
+
+extension RocketsPresenter: SettingsServiceDelegate {
+	func heightSettingsChanged() {
+		let indexPath = IndexPath(row: 0, section: 0)
+		view?.reloadCollectionViewCell(indexPaths: [indexPath])
+	}
+	
+	func diameterSettingsChanged() {
+		let indexPath = IndexPath(row: 1, section: 0)
+		view?.reloadCollectionViewCell(indexPaths: [indexPath])
+	}
+	
+	func massSettingsChanged() {
+		let indexPath = IndexPath(row: 2, section: 0)
+		view?.reloadCollectionViewCell(indexPaths: [indexPath])
+	}
+	
+	func payloadsSettingsChanged() {
+		let indexPath = IndexPath(row: 3, section: 0)
+		view?.reloadCollectionViewCell(indexPaths: [indexPath])
 	}
 }

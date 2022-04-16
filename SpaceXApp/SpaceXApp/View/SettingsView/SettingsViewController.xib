@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="SpaceXApp" customModuleProvider="target">
+            <connections>
+                <outlet property="diameterSegmentedControl" destination="TmU-m5-S1T" id="sIX-vR-3Z0"/>
+                <outlet property="heightSegmentedControl" destination="It7-gk-v4K" id="86Z-vX-fWg"/>
+                <outlet property="massSegmentedControl" destination="9fV-D8-ruq" id="Dv2-9J-UP6"/>
+                <outlet property="payloadsSegmentedControl" destination="by5-hV-c1f" id="pP4-4A-nge"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Диаметр" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pj2-YR-sfH">
+                    <rect key="frame" x="20" y="113" width="67.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Масса" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jo-eR-wur">
+                    <rect key="frame" x="20" y="167.5" width="49" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нагрузка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWq-FJ-t0i">
+                    <rect key="frame" x="20" y="222" width="70" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="It7-gk-v4K">
+                    <rect key="frame" x="314" y="50" width="80" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="F5y-4s-F0w"/>
+                        <constraint firstAttribute="width" constant="80" id="ngs-RP-KER"/>
+                    </constraints>
+                    <segments>
+                        <segment title="m"/>
+                        <segment title="ft"/>
+                    </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="heightSegmentedControlAction:" destination="-1" eventType="valueChanged" id="JtC-fl-x1O"/>
+                    </connections>
+                </segmentedControl>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TmU-m5-S1T">
+                    <rect key="frame" x="314" y="103" width="80" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="5lC-gd-XAR"/>
+                        <constraint firstAttribute="height" constant="40" id="Vya-yr-xlm"/>
+                    </constraints>
+                    <segments>
+                        <segment title="m"/>
+                        <segment title="ft"/>
+                    </segments>
+                    <connections>
+                        <action selector="diameterSegmentedControlAction:" destination="-1" eventType="valueChanged" id="k9G-sc-VEd"/>
+                    </connections>
+                </segmentedControl>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9fV-D8-ruq">
+                    <rect key="frame" x="314" y="157.5" width="80" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="T7s-Y3-u1x"/>
+                        <constraint firstAttribute="height" constant="40" id="jDP-db-bT2"/>
+                    </constraints>
+                    <segments>
+                        <segment title="kg"/>
+                        <segment title="lb"/>
+                    </segments>
+                    <connections>
+                        <action selector="massSegmentedControlAction:" destination="-1" eventType="valueChanged" id="148-kf-xQE"/>
+                    </connections>
+                </segmentedControl>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="by5-hV-c1f">
+                    <rect key="frame" x="314" y="212" width="80" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="ghN-4s-4XP"/>
+                        <constraint firstAttribute="height" constant="40" id="tXN-G3-PgZ"/>
+                    </constraints>
+                    <segments>
+                        <segment title="kg"/>
+                        <segment title="lb"/>
+                    </segments>
+                    <connections>
+                        <action selector="payloadsSegmentedControlAction:" destination="-1" eventType="valueChanged" id="bWC-5s-FME"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Высота" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnG-Bk-ggD">
+                    <rect key="frame" x="20" y="62" width="59" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.02688511461" green="0.019068414531683613" blue="0.02576276413161013" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="by5-hV-c1f" firstAttribute="centerY" secondItem="jWq-FJ-t0i" secondAttribute="centerY" id="195-xv-w9Y"/>
+                <constraint firstItem="Pj2-YR-sfH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="1nW-Yz-S6W"/>
+                <constraint firstItem="0jo-eR-wur" firstAttribute="top" secondItem="Pj2-YR-sfH" secondAttribute="bottom" constant="35" id="AWN-KY-ICF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TmU-m5-S1T" secondAttribute="trailing" constant="20" id="MDk-Db-Rlu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9fV-D8-ruq" secondAttribute="trailing" constant="20" id="NIY-PF-kTK"/>
+                <constraint firstItem="9fV-D8-ruq" firstAttribute="centerY" secondItem="0jo-eR-wur" secondAttribute="centerY" id="NTb-d1-VZr"/>
+                <constraint firstItem="JnG-Bk-ggD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="62" id="PoV-Ys-GbO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="by5-hV-c1f" secondAttribute="trailing" constant="20" id="QoA-Jh-q21"/>
+                <constraint firstItem="It7-gk-v4K" firstAttribute="centerY" secondItem="JnG-Bk-ggD" secondAttribute="centerY" id="TqJ-S3-ysP"/>
+                <constraint firstItem="Pj2-YR-sfH" firstAttribute="top" secondItem="JnG-Bk-ggD" secondAttribute="bottom" constant="35" id="YHQ-v0-kbR"/>
+                <constraint firstItem="TmU-m5-S1T" firstAttribute="centerY" secondItem="Pj2-YR-sfH" secondAttribute="centerY" id="ZbB-6L-zc4"/>
+                <constraint firstItem="0jo-eR-wur" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="bdv-K4-dfA"/>
+                <constraint firstItem="JnG-Bk-ggD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="cil-ok-w1j"/>
+                <constraint firstItem="jWq-FJ-t0i" firstAttribute="top" secondItem="0jo-eR-wur" secondAttribute="bottom" constant="35" id="hPW-aE-Hmt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="It7-gk-v4K" secondAttribute="trailing" constant="20" id="jIt-W6-jqy"/>
+                <constraint firstItem="It7-gk-v4K" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="lgI-16-Ctf"/>
+                <constraint firstItem="jWq-FJ-t0i" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="owu-io-hdr"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="2.8985507246376816" y="56.919642857142854"/>
+        </view>
+    </objects>
+</document>

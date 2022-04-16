@@ -2,15 +2,25 @@ import Foundation
 
 final class LaunchesPresenter: LaunchesPresenterProtocol {
 	
+	// MARK: - Properties
+	
 	weak var view: LaunchesViewProtocol?
+	
+	// MARK: - Private Properties
+	
 	private var rocketId: String
 	private var launches: [Launch] = [Launch]()
+	
+	
+	// MARK: - init
 	
 	init(view: LaunchesViewProtocol, rocketId: String) {
 		self.view = view
 		self.rocketId = rocketId
 		dowloadLaunches()
 	}
+	
+	// MARK: - Private methods
 	
 	private func dowloadLaunches() {
 		guard let url = URL(string: "https://api.spacexdata.com/v4/launches") else {
@@ -29,6 +39,8 @@ final class LaunchesPresenter: LaunchesPresenterProtocol {
 			print(error ?? "error")
 		}
 	}
+	
+	// MARK: - LaunchesPresenterProtocol
 	
 	private func formateDate(stringDate: String) -> String {
 		let dateFormatter = DateFormatter()

@@ -70,7 +70,7 @@ class SettingsViewController: UIViewController, SettingsViewProtocol {
 		navigationItem.rightBarButtonItem = closeButton
 		navigationItem.title = "Настройки"
 		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-		navigationController?.navigationBar.isTranslucent = false
+		navigationController?.navigationBar.isTranslucent = true
 		navigationController?.navigationBar.barTintColor = view.backgroundColor
 	}
 	

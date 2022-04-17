@@ -13,7 +13,7 @@ class LaunchesViewController: UIViewController, LaunchesViewProtocol {
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.register(LaunchesTableViewCell.self, forCellReuseIdentifier: LaunchesTableViewCell.identifirer)
 		tableView.separatorStyle = .none
-		tableView.backgroundColor = .black
+		tableView.backgroundColor = Constants.backgroundColor
 		return tableView
 	}()
 	
@@ -26,7 +26,7 @@ class LaunchesViewController: UIViewController, LaunchesViewProtocol {
 		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 		launchesTableView.delegate = self
 		launchesTableView.dataSource = self
-		view.backgroundColor = .black
+		view.backgroundColor = Constants.backgroundColor
 		view.addSubview(launchesTableView)
 		setupLaunchesTableView()
 		

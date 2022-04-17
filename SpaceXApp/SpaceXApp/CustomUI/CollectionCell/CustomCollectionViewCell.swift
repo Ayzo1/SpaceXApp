@@ -5,7 +5,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
 	private lazy var roundedView: UIView = {
 		let view = UIView()
 		view.layer.cornerRadius = 32
-		view.backgroundColor = #colorLiteral(red: 0.1058690324, green: 0.1058908626, blue: 0.105864279, alpha: 1)
+		view.backgroundColor = Constants.cellBackgroundColor
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.contentMode = .scaleToFill
 		return view
@@ -15,9 +15,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.boldSystemFont(ofSize: 15)
-		label.textColor = .white
+		label.textColor = Constants.valueLabelTextColor
 		label.textAlignment = .center
-		//label.lineBreakMode = .byWordWrapping
 		label.numberOfLines = 1
 		return label
 	}()
@@ -26,7 +25,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 12)
-		label.textColor = .gray
+		label.textColor = Constants.nameLabelTextColor
 		label.textAlignment = .center
 		return label
 	}()
@@ -49,10 +48,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
 	private func setupValueLabel() {
 		valueLabel.bottomAnchor.constraint(equalTo: roundedView.centerYAnchor, constant: 0).isActive = true
 		valueLabel.centerXAnchor.constraint(equalTo: roundedView.centerXAnchor).isActive = true
-		//valueLabel.topAnchor.constraint(equalTo: roundedView.topAnchor, constant: 5).isActive = true
-		//valueLabel.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor, constant: 5).isActive = true
-		//valueLabel.trailingAnchor.constraint(equalTo: roundedView.trailingAnchor, constant: 5).isActive = true
-		
 	}
 	
 	private func setupKeyLabel() {

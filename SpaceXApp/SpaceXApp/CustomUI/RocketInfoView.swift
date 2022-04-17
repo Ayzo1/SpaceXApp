@@ -7,7 +7,7 @@ class RocketInfoView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 16)
-		label.textColor = .gray
+		label.textColor = Constants.nameLabelTextColor
 		label.text = "Первый запуск"
 		return label
 	}()
@@ -16,7 +16,7 @@ class RocketInfoView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 16)
-		label.textColor = .gray
+		label.textColor = Constants.nameLabelTextColor
 		label.text = "Страна"
 		return label
 	}()
@@ -25,7 +25,7 @@ class RocketInfoView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 16)
-		label.textColor = .gray
+		label.textColor = Constants.nameLabelTextColor
 		label.text = "Стоимость запуска"
 		return label
 	}()
@@ -34,7 +34,7 @@ class RocketInfoView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 16)
-		label.textColor = .white
+		label.textColor = Constants.valueLabelTextColor
 		return label
 	}()
 	
@@ -42,7 +42,8 @@ class RocketInfoView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 16)
-		label.textColor = .white
+		label.textColor = Constants.valueLabelTextColor
+		label.lineBreakMode = .byTruncatingTail
 		return label
 	}()
 	
@@ -50,7 +51,7 @@ class RocketInfoView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont.systemFont(ofSize: 16)
-		label.textColor = .white
+		label.textColor = Constants.valueLabelTextColor
 		return label
 	}()
 	
@@ -137,6 +138,7 @@ class RocketInfoView: UIView {
 	}
 	
 	private func setupCountryValueLabel() {
+		countryValueLabel.leadingAnchor.constraint(greaterThanOrEqualTo: countryLabel.trailingAnchor, constant: 20).isActive = true
 		countryValueLabel.trailingAnchor.constraint(equalTo: countryRowView.trailingAnchor, constant: -10).isActive = true
 		countryValueLabel.centerYAnchor.constraint(equalTo: countryRowView.centerYAnchor).isActive = true
 	}

@@ -2,6 +2,10 @@ import Foundation
 import UIKit
 
 class SettingsViewController: UIViewController, SettingsViewProtocol {
+		
+	override var prefersStatusBarHidden: Bool {
+		return true
+	}
 	
 	// MARK: - IBOutlets
 	
@@ -42,7 +46,7 @@ class SettingsViewController: UIViewController, SettingsViewProtocol {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		presenter = SettingsPresenter(view: self)
 		configurateControls()
 		applyCurrentSettings()

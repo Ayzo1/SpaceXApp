@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H1715" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DBDiameter" representedClassName="DBDiameter" syncable="YES">
+        <attribute name="feet" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="meters" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="rocket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBRocket" inverseName="diameter" inverseEntity="DBRocket"/>
+    </entity>
+    <entity name="DBFirstStage" representedClassName="DBFirstStage" syncable="YES">
+        <attribute name="burnTime" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="engines" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fuelAmountTons" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="rocket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBRocket" inverseName="firstStage" inverseEntity="DBRocket"/>
+    </entity>
+    <entity name="DBHeight" representedClassName="DBHeight" syncable="YES">
+        <attribute name="feet" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="meters" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="rocket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBRocket" inverseName="height" inverseEntity="DBRocket"/>
+    </entity>
+    <entity name="DBLaunch" representedClassName="DBLaunch" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rocket" optional="YES" attributeType="String"/>
+        <attribute name="success" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="DBMass" representedClassName="DBMass" syncable="YES">
+        <attribute name="kg" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="lb" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="rocket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBRocket" inverseName="mass" inverseEntity="DBRocket"/>
+    </entity>
+    <entity name="DBPayload" representedClassName="DBPayload" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="kg" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lb" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="rocket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBRocket" inverseName="payloads" inverseEntity="DBRocket"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="DBRocket" representedClassName="DBRocket" syncable="YES">
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="firstFlight" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="images" optional="YES" attributeType="Transformable" valueTransformerName="images"/>
+        <attribute name="launchCost" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="diameter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBDiameter" inverseName="rocket" inverseEntity="DBDiameter"/>
+        <relationship name="firstStage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBFirstStage" inverseName="rocket" inverseEntity="DBFirstStage"/>
+        <relationship name="height" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBHeight" inverseName="rocket" inverseEntity="DBHeight"/>
+        <relationship name="mass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBMass" inverseName="rocket" inverseEntity="DBMass"/>
+        <relationship name="payloads" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBPayload" inverseName="rocket" inverseEntity="DBPayload"/>
+        <relationship name="secondStage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBSecondStage" inverseName="rocket" inverseEntity="DBSecondStage"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="DBSecondStage" representedClassName="DBSecondStage" syncable="YES">
+        <attribute name="burnTime" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="engines" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fuelAmountTons" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="rocket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBRocket" inverseName="secondStage" inverseEntity="DBRocket"/>
+    </entity>
+    <elements>
+        <element name="DBRocket" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="DBDiameter" positionX="-36" positionY="36" width="128" height="88"/>
+        <element name="DBMass" positionX="-18" positionY="54" width="128" height="88"/>
+        <element name="DBFirstStage" positionX="0" positionY="72" width="128" height="103"/>
+        <element name="DBPayload" positionX="18" positionY="99" width="128" height="118"/>
+        <element name="DBSecondStage" positionX="36" positionY="126" width="128" height="103"/>
+        <element name="DBHeight" positionX="-9" positionY="81" width="128" height="88"/>
+        <element name="DBLaunch" positionX="0" positionY="99" width="128" height="118"/>
+    </elements>
+</model>

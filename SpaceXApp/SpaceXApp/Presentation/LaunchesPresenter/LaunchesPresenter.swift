@@ -1,4 +1,5 @@
 import Foundation
+import CoreData
 
 final class LaunchesPresenter: LaunchesPresenterProtocol {
 	
@@ -9,8 +10,8 @@ final class LaunchesPresenter: LaunchesPresenterProtocol {
 	// MARK: - Private Properties
 	
 	private var rocketId: String
-	private var launches: [Launch] = [Launch]()
-	
+	private var launches: [DBLaunch] = [DBLaunch]()
+	private var coreDataStack = CoreDataStack()
 	
 	// MARK: - init
 	
@@ -28,12 +29,30 @@ final class LaunchesPresenter: LaunchesPresenterProtocol {
 		}
 		let networkService = NetworkingService()
 		networkService.fetchFromUrl(url: url) { [weak self] data in
-			do {
-				let allLaunches = try JSONDecoder().decode([Launch].self, from: data)
-				self?.launches = allLaunches.filter({ $0.rocket == self?.rocketId })
+			self?.coreDataStack.performSave() { context in
+				let decoder = JSONDecoder()
+				decoder.userInfo[CodingUserInfoKey.context!] = context
+				
+				do {
+					_ = try decoder.decode([DBLaunch].self, from: data)
+				} catch {
+					print(error.localizedDescription)
+				}
+			} successSave: {
+				let request: NSFetchRequest<DBLaunch> = DBLaunch.fetchRequest()
+				guard let id = self?.rocketId else {
+					return
+				}
+				let predicate = NSPredicate(format: "rocket == %@", id)
+				request.sortDescriptors = [
+					NSSortDescriptor(key: #keyPath(DBLaunch.date), ascending: true)
+				]
+				request.predicate = predicate
+				guard let dbLaunches = self?.coreDataStack.fetch(fetchRequest: request) else {
+					return
+				}
+				self?.launches = dbLaunches
 				self?.view?.updateValues()
-			} catch {
-				print(error)
 			}
 		} falilure: { (error) in
 			print(error ?? "error")
@@ -56,9 +75,9 @@ final class LaunchesPresenter: LaunchesPresenterProtocol {
 	func getLaunchDescription(for index: Int) -> (name: String, date: String, isSuccess: Bool) {
 		let launch = launches[index]
 		
-		let date = formateDate(stringDate: launch.date_utc)
+		let date = formateDate(stringDate: launch.date ?? "")
 		
-		return (name: launch.name, date: date, isSuccess: launch.success ?? false)
+		return (name: launch.name ?? "", date: date, isSuccess: launch.success)
 	}
 	
 	func getLaunchesCount() -> Int {

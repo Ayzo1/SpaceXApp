@@ -49,6 +49,8 @@
 		8F0AE507280C44050073296B /* DBDiameter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE505280C44050073296B /* DBDiameter+CoreDataProperties.swift */; };
 		8F0AE513280C4F700073296B /* DBHeight+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE511280C4F700073296B /* DBHeight+CoreDataClass.swift */; };
 		8F0AE514280C4F700073296B /* DBHeight+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE512280C4F700073296B /* DBHeight+CoreDataProperties.swift */; };
+		8F0AE518280C5ED10073296B /* DBLaunch+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE516280C5ED10073296B /* DBLaunch+CoreDataClass.swift */; };
+		8F0AE519280C5ED10073296B /* DBLaunch+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AE517280C5ED10073296B /* DBLaunch+CoreDataProperties.swift */; };
 		8F0D34C42808C60200DDCFE1 /* SettingsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0D34C32808C60200DDCFE1 /* SettingsViewProtocol.swift */; };
 		8F0D34CA2808CA4F00DDCFE1 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0D34C92808CA4F00DDCFE1 /* SettingsTableViewCell.swift */; };
 		8F554293280037EE00A67D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F554292280037EE00A67D82 /* AppDelegate.swift */; };
@@ -103,6 +105,8 @@
 		8F0AE505280C44050073296B /* DBDiameter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBDiameter+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		8F0AE511280C4F700073296B /* DBHeight+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBHeight+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		8F0AE512280C4F700073296B /* DBHeight+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBHeight+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		8F0AE516280C5ED10073296B /* DBLaunch+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBLaunch+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		8F0AE517280C5ED10073296B /* DBLaunch+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBLaunch+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		8F0D34C32808C60200DDCFE1 /* SettingsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewProtocol.swift; sourceTree = "<group>"; };
 		8F0D34C92808CA4F00DDCFE1 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		8F55428F280037EE00A67D82 /* SpaceXApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,6 +277,8 @@
 		8F0AE4E4280C3E060073296B /* NSManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				8F0AE516280C5ED10073296B /* DBLaunch+CoreDataClass.swift */,
+				8F0AE517280C5ED10073296B /* DBLaunch+CoreDataProperties.swift */,
 				8F0AE511280C4F700073296B /* DBHeight+CoreDataClass.swift */,
 				8F0AE512280C4F700073296B /* DBHeight+CoreDataProperties.swift */,
 				8F0AE504280C44050073296B /* DBDiameter+CoreDataClass.swift */,
@@ -485,10 +491,12 @@
 				8F0AE4CA280AF8600073296B /* UserDefaultsService.swift in Sources */,
 				8F0AE4B5280AD9660073296B /* SettingsPresenter.swift in Sources */,
 				8F087319280492D8004EFCFE /* NetworkingServiceProtocol.swift in Sources */,
+				8F0AE518280C5ED10073296B /* DBLaunch+CoreDataClass.swift in Sources */,
 				8F0AE4F3280C3E230073296B /* DBPayload+CoreDataClass.swift in Sources */,
 				8F08732E2804C872004EFCFE /* Launch.swift in Sources */,
 				8F0AE4BB280ADAD20073296B /* SettingsServiceProtocol.swift in Sources */,
 				8F0873212804B638004EFCFE /* RocketsPresenterProtocol.swift in Sources */,
+				8F0AE519280C5ED10073296B /* DBLaunch+CoreDataProperties.swift in Sources */,
 				8F0AE4DE280C33450073296B /* CoreDataStack.swift in Sources */,
 				8F0873382804D7A5004EFCFE /* LaunchesPresenterProtocol.swift in Sources */,
 				8F08730B280402AF004EFCFE /* LaunchesViewController.swift in Sources */,

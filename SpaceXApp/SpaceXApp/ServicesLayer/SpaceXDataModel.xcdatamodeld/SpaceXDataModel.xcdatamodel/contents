@@ -16,6 +16,18 @@
         <attribute name="meters" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="rocket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBRocket" inverseName="height" inverseEntity="DBRocket"/>
     </entity>
+    <entity name="DBLaunch" representedClassName="DBLaunch" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rocket" optional="YES" attributeType="String"/>
+        <attribute name="success" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="DBMass" representedClassName="DBMass" syncable="YES">
         <attribute name="kg" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="lb" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -66,5 +78,6 @@
         <element name="DBPayload" positionX="18" positionY="99" width="128" height="118"/>
         <element name="DBSecondStage" positionX="36" positionY="126" width="128" height="103"/>
         <element name="DBHeight" positionX="-9" positionY="81" width="128" height="88"/>
+        <element name="DBLaunch" positionX="0" positionY="99" width="128" height="118"/>
     </elements>
 </model>

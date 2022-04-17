@@ -3,11 +3,20 @@ import Foundation
 final class RocketsPresenter: RocketsPresenterProtocol {
 	
 	weak var view: RocketsViewProtocol?
-	private var rockets: [Rocket] = [Rocket]()
-	var settingsService: SettingsServiceProtocol?
+	
+	// MARK: - Private properties
+	
+	private var rockets: [DBRocket] = [DBRocket]()
+	private var settingsService: SettingsServiceProtocol?
+	private let coreDataStack = CoreDataStack()
+	
+	// MARK: - init
 	
 	init(view: RocketsViewProtocol) {
 		self.view = view
+		
+		self.rockets = coreDataStack.fetch(fetchRequest: DBRocket.fetchRequest())
+		
 		downloadRockets()
 		guard let service: SettingsServiceProtocol = ServiceLocator.shared.resolve() else {
 			return
@@ -25,15 +34,25 @@ final class RocketsPresenter: RocketsPresenterProtocol {
 		}
 		let networkService = NetworkingService()
 		networkService.fetchFromUrl(url: url) { [weak self] data in
-			do {
-				let rockets = try JSONDecoder().decode([Rocket].self, from: data)
-				self?.rockets = rockets
+			
+			self?.coreDataStack.performSave() { context in
+				let decoder = JSONDecoder()
+				decoder.userInfo[CodingUserInfoKey.context!] = context
+				
+				do {
+					_ = try decoder.decode([DBRocket].self, from: data)
+				} catch {
+					print(error.localizedDescription)
+				}
+			} successSave: {
+				guard let dbRockets = self?.coreDataStack.fetch(fetchRequest: DBRocket.fetchRequest()) else {
+					return
+				}
+				self?.rockets = dbRockets
 				self?.view?.updateValues()
-			} catch {
-				print(error)
 			}
 		} falilure: { (error) in
-			print(error ?? "error")
+			print(error?.localizedDescription ?? "error")
 		}
 	}
 	
@@ -48,14 +67,87 @@ final class RocketsPresenter: RocketsPresenterProtocol {
 		return dateFormatter.string(from: date)
 	}
 	
+	private func configurateHeight(rocket index: Int) -> (value: String, name: String) {
+		guard let height = rockets[index].height else {
+			return (value: "", name: "Высота, ft")
+		}
+		guard let service = settingsService else {
+			return (value: String(height.feet), name: "Высота, ft")
+		}
+		if service.currentHeightSettings == .m {
+			return (
+				value: String(height.meters),
+				name: "Высота, \(service.currentHeightSettings.rawValue)")
+		} else {
+			return (
+				value: String(height.feet),
+				name: "Высота, \(service.currentHeightSettings.rawValue)")
+		}
+	}
+	
+	private func configurateDiameter(rocket index: Int) -> (value: String, name: String) {
+		guard let diameter = rockets[index].diameter else {
+			return (value: "0", name: "Диаметр, ft")
+		}
+		guard let service = settingsService else {
+			return (value: String(diameter.feet), name: "Диаметр, ft")
+		}
+		if service.currentDiameterSettings == .m {
+			return (
+				value: String(diameter.meters),
+				name: "Диаметр, \(service.currentDiameterSettings.rawValue)")
+		} else {
+			return (
+				value: String(diameter.feet),
+				name: "Диаметр, \(service.currentDiameterSettings.rawValue)")
+		}
+	}
+	
+	private func configurateMass(rocket index: Int) -> (value: String, name: String) {
+		guard let mass = rockets[index].mass else {
+			return (value: "", name: "Масса, ft")
+		}
+		guard let service = settingsService else {
+			return (value: String(mass.kg), name: "Масса, kg")
+		}
+		if service.currentMassSettings == .kg {
+			return (
+				value: String(mass.kg),
+				name: "Масса, \(service.currentMassSettings.rawValue)")
+		} else {
+			return (
+				value: String(mass.lb),
+				name: "Масса, \(service.currentMassSettings.rawValue)")
+		}
+	}
+	
+	private func configuratePayload(rocket index: Int) -> (value: String, name: String) {
+		guard let payloads = rockets[index].payloads?.allObjects as? [DBPayload] else {
+			return (value: "", name: "Высота, ft")
+		}
+		if payloads.isEmpty { return (value: "", name: "Высота, ft") }
+		guard let service = settingsService else {
+			return (value: String(payloads[0].kg), name: "Нагрузка, kg")
+		}
+		if service.currentPayloadsSettings == .kg {
+			return (
+				value: String(payloads[0].kg),
+				name: "Нагрузка, \(service.currentPayloadsSettings.rawValue)")
+		} else {
+			return (
+				value: String(payloads[0].lb),
+				name: "Нагрузка, \(service.currentPayloadsSettings.rawValue)")
+		}
+	}
+	
 	// MARK: - RocketsPresenterProtocol
 	
 	func getRocketId(for index: Int) -> String {
-		return rockets[index].id
+		return rockets[index].id ?? ""
 	}
 	
 	func getRocketName(for index: Int) -> String {
-		return rockets[index].name
+		return rockets[index].name ?? ""
 	}
 	
 	func getPagesCount() -> Int {
@@ -65,40 +157,38 @@ final class RocketsPresenter: RocketsPresenterProtocol {
 	func getRocketInfo(for index: Int) -> (firstLaunch: String, country: String, launchCost: String) {
 		
 		let rocket = rockets[index]
-		let cost = rocket.cost_per_launch
+		let cost = rocket.launchCost
 		
 		let costInMillions = cost / 1000000
-		let date = formateDate(stringDate: rocket.first_flight)
+		let date = formateDate(stringDate: rocket.firstFlight ?? "")
 		
-		return (firstLaunch: date, country: rocket.country, launchCost: String(costInMillions))
+		return (firstLaunch: date, country: rocket.country ?? "", launchCost: String(costInMillions))
 	}
 	
 	func getFirstStageInfo(for index: Int) -> (engiensCount: String, massOfFuel: String, burnTime: String) {
 		let rocket = rockets[index]
-		let firstStage = rocket.first_stage
+		let firstStage = rocket.firstStage
+		let engines = String(firstStage?.engines ?? 0)
 		
-		
-		return (engiensCount: String(firstStage.engines), massOfFuel: String(firstStage.fuel_amount_tons), burnTime: String(firstStage.burn_time_sec ?? 0))
+		return (engiensCount: engines, massOfFuel: String(firstStage?.fuelAmountTons ?? 0), burnTime: String(firstStage?.burnTime ?? 0))
 	}
 	
 	func getSecondStageInfo(for index: Int) -> (engiensCount: String, massOfFuel: String, burnTime: String) {
 		let rocket = rockets[index]
-		let secondStage = rocket.second_stage
+		let secondStage = rocket.secondStage
 		
-		
-		return (engiensCount: String(secondStage.engines), massOfFuel: String(secondStage.fuel_amount_tons), burnTime: String(secondStage.burn_time_sec ?? 0))
+		return (engiensCount: String(secondStage?.engines ?? 0), massOfFuel: String(secondStage?.fuelAmountTons ?? 0), burnTime: String(secondStage?.burnTime ?? 0))
 	}
 	
 	func getImageURL(for index: Int) -> URL? {
 		
-		guard let stringUrl = rockets[index].flickr_images.first else {
+		guard let stringUrl = rockets[index].images?.first else {
 			return nil
 		}
-				
 		guard let url = URL(string: stringUrl) else {
 			return nil
 		}
-		
+
 		return url
 	}
 	
@@ -113,57 +203,13 @@ final class RocketsPresenter: RocketsPresenterProtocol {
 				
 		switch characteristicIndex {
 		case 0:
-			guard let service = settingsService else {
-				return (value: String(rockets[rocketIndex].height.feet), name: "Высота, ft")
-			}
-			if service.currentHeightSettings == .m {
-				return (
-					value: String(rockets[rocketIndex].height.meters),
-					name: "Высота, \(service.currentHeightSettings.rawValue)")
-			} else {
-				return (
-					value: String(rockets[rocketIndex].height.feet),
-					name: "Высота, \(service.currentHeightSettings.rawValue)")
-			}
+			return configurateHeight(rocket: rocketIndex)
 		case 1:
-			guard let service = settingsService else {
-				return (value: String(rockets[rocketIndex].diameter.feet), name: "Диаметр, ft")
-			}
-			if service.currentDiameterSettings == .m {
-				return (
-					value: String(rockets[rocketIndex].diameter.meters),
-					name: "Диаметр, \(service.currentDiameterSettings.rawValue)")
-			} else {
-				return (
-					value: String(rockets[rocketIndex].diameter.feet),
-					name: "Диаметр, \(service.currentDiameterSettings.rawValue)")
-			}
+			return configurateDiameter(rocket: rocketIndex)
 		case 2:
-			guard let service = settingsService else {
-				return (value: String(rockets[rocketIndex].mass.kg), name: "Масса, kg")
-			}
-			if service.currentMassSettings == .kg {
-				return (
-					value: String(rockets[rocketIndex].mass.kg),
-					name: "Масса, \(service.currentMassSettings.rawValue)")
-			} else {
-				return (
-					value: String(rockets[rocketIndex].mass.lb),
-					name: "Масса, \(service.currentMassSettings.rawValue)")
-			}
+			return configurateMass(rocket: rocketIndex)
 		case 3:
-			guard let service = settingsService else {
-				return (value: String(rockets[rocketIndex].payload_weights[0].kg), name: "Нагрузка, kg")
-			}
-			if service.currentPayloadsSettings == .kg {
-				return (
-					value: String(rockets[rocketIndex].payload_weights[0].kg),
-					name: "Нагрузка, \(service.currentPayloadsSettings.rawValue)")
-			} else {
-				return (
-					value: String(rockets[rocketIndex].payload_weights[0].lb),
-					name: "Нагрузка, \(service.currentPayloadsSettings.rawValue)")
-			}
+			return configuratePayload(rocket: rocketIndex)
 		default:
 			return (value: "", name: "")
 		}

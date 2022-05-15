@@ -15,4 +15,4 @@
 Для кэширования данных используется Core Data. 
 
 
-Используемый api [https://github.com/r-spacex/SpaceX-API](https://github.com/r-spacex/SpaceX-API)
+Используемый api: [https://github.com/r-spacex/SpaceX-API](https://github.com/r-spacex/SpaceX-API).

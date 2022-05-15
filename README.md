@@ -5,7 +5,7 @@
 Экраны:
 
 
-<img src="screenshots/launches.png" height = 300/>  <img src="screenshots/launches.png" height = 300/>  <img src="screenshots/settings.png" height = 300/>
+<img src="screenshots/main.png" height = 300/>  <img src="screenshots/launches.png" height = 300/>  <img src="screenshots/settings.png" height = 300/>
 - Главный экран приложения с информацией о ракетах 
 - Экран со списком запусков ракеты 
 - Экран настроек для изменения единиц измерения характеристик ракеты 
